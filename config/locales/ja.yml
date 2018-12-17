@@ -8,3 +8,8 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認用）
+      castle:
+        picture: 写真
+        name: 城名
+        location: 所在地
+        comment: コメント

@@ -1,10 +1,28 @@
-<div class="center jumbotron">
-  <h1>城レコへようこそ</h1>
-  <h2>訪れたお城を記録しましょう！</h2>
-  <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
-  <div class="home-images">
-    <%= image_tag("IMG_0346.jpg", :size => "320x250") %>
-    <%= image_tag("IMG_0422.JPG", :size => "320x250") %>
-    <%= image_tag("IMG_0534.JPG", :size => "320x250") %>
+<% if logged_in? %>
+<% provide(:button_text, 'お城を記録する') %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="castle_form">
+        <%= render 'shared/castle_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>お城一覧</h3>
+      <%= render 'shared/feed' %>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>城レコへようこそ</h1>
+    <h2>訪れたお城を記録しましょう！</h2>
+    <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
+    <div class="home-images">
+      <%= image_tag("IMG_0346.jpg", :size => "320x250") %>
+      <%= image_tag("IMG_0422.JPG", :size => "320x250") %>
+      <%= image_tag("IMG_0534.JPG", :size => "320x250") %>
+    </div>
+  </div>
+<% end %>

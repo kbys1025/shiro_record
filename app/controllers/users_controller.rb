@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @castles = @user.castles.paginate(page: params[:page])
   end
 
   def new
@@ -51,16 +52,7 @@ class UsersController < ApplicationController
                                       :password_confirmation)
     end
 
-    # beforeアクション
-
-    # ログイン済みユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインして下さい"
-        redirect_to login_url
-      end
-    end
+    # beforeフィルター
 
     # 正しいユーザーかどうか確認
     def correct_user
@@ -71,6 +63,6 @@ class UsersController < ApplicationController
     # 管理者かどうか確認
     def admin_user
       redirect_to(root_url) unless current_user.admin?
-    end 
+    end
 
 end

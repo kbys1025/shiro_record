@@ -1,0 +1,77 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% file_path = Rails.root.join('test', 'fixtures') %>
+
+one:
+  picture: <%= file_path.join('IMG_0346.jpg') %>
+  name: "大阪城"
+  location: "大阪府大阪市"
+  comment: "大きなお城でした"
+  created_at: <%= 10.minutes.ago %>
+  user: test1
+
+two:
+  picture: <%= file_path.join('IMG_0346.jpg') %>
+  name: "伊賀上野城"
+  location: "三重県伊賀市"
+  comment: "高石垣が立派でした！"
+  created_at: <%= 3.years.ago %>
+  user: test1
+
+tree:
+  picture: <%= file_path.join('IMG_0346.jpg') %>
+  name: "上田城"
+  location: "長野県上田市"
+  comment: "真田氏のお城"
+  created_at: <%= 2.hours.ago %>
+  user: test1
+
+most_recent:
+  picture: <%= file_path.join('IMG_0346.jpg') %>
+  name: "備中松山城"
+  location: "岡山県高梁市"
+  comment: "山の上にあるお城で景色が素晴らしかったです！"
+  created_at: <%= Time.zone.now %>
+  user: test1
+
+<% 30.times do |n| %>
+castle_<%= n %>:
+  picture: <%= file_path.join('IMG_0346.jpg') %>
+  name: <%=  n %>
+  location: <%=  n %>
+  comment: <%=  n %>
+  created_at: <%= 42.days.ago %>
+  user: test1
+<% end %>
+
+four:
+  picture: <%= file_path.join('IMG_0346.jpg') %>
+  name: "a"
+  location: "a"
+  comment: "a"
+  created_at: <%= 2.years.ago %>
+  user: test2
+
+five:
+  picture: <%= file_path.join('IMG_0346.jpg') %>
+  name: "a"
+  location: "a"
+  comment: "a"
+  created_at: <%= 3.days.ago %>
+  user: test2
+
+six:
+  picture: <%= file_path.join('IMG_0346.jpg') %>
+  name: "a"
+  location: "a"
+  comment: "a"
+  created_at: <%= 10.minutes.ago %>
+  user: test3
+
+seven:
+  picture: <%= file_path.join('IMG_0346.jpg') %>
+  name: "a"
+  location: "a"
+  comment: "a"
+  created_at: <%= 4.hours.ago %>
+  user: test3

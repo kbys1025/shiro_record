@@ -8,4 +8,13 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.castles.any? %>
+      <h3>投稿数：<%= @user.castles.count %></h3>
+      <ol class="castles">
+        <%= render @castles %>
+      </ol>
+      <%= will_paginate @castles %>
+    <% end %>
+  </div>
 </div>
