@@ -81,4 +81,33 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "should follow and unfollow a user" do
+    test1 = users(:test1)
+    test2 = users(:test2)
+    assert_not test1.following?(test2)
+    test1.follow(test2)
+    assert test1.following?(test2)
+    assert test2.followers.include?(test1)
+    test1.unfollow(test2)
+    assert_not test1.following?(test2)
+  end
+
+  test "feed should have the right castles" do
+    test1 = users(:test1)
+    test2 = users(:test2)
+    test3 = users(:test3)
+    # フォローしているユーザーの投稿を確認
+    test3.castles.each do |castle_following|
+      assert test1.feed.include?(castle_following)
+    end
+    # 自分自身の投稿を確認
+    test1.castles.each do |castle_self|
+      assert test1.feed.include?(castle_self)
+    end
+    # フォローしていないユーザーの投稿を確認
+    test2.castles.each do |castle_unfollowed|
+      assert_not test1.feed.include?(castle_unfollowed)
+    end
+  end
+
 end

@@ -18,3 +18,11 @@ User.create!(name: "サンプル2",
                 password: password,
                 password_confirmation: password)
 end
+
+# リレーションシップ
+users = User.all
+user = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
