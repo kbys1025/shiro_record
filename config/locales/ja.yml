@@ -13,3 +13,5 @@ ja:
         name: 城名
         location: 所在地
         comment: コメント
+      post:
+        picture: 写真

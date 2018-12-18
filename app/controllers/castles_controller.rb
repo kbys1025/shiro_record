@@ -4,6 +4,7 @@ class CastlesController < ApplicationController
 
   def show
     @castle = Castle.find(params[:id])
+    @post = @castle.posts.build
   end
 
   def create
@@ -32,6 +33,7 @@ class CastlesController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     @castle.destroy
     flash[:success] = "お城の記録を削除しました"
     redirect_to request.referrer || root_url

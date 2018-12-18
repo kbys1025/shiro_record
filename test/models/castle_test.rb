@@ -5,7 +5,7 @@ class CastleTest < ActiveSupport::TestCase
   def setup
     @user = users(:test1)
     picture = Rack::Test::UploadedFile.new(Rails.root.join('test', 'fixtures',
-                                                    'IMG_0346.jpg'), 'img/jpg')
+                                                    'test.jpg'), 'img/jpg')
     @castle = @user.castles.build(picture: picture,
                                       name: "大阪城",
                                   location: "大阪府大阪市",
@@ -43,6 +43,16 @@ class CastleTest < ActiveSupport::TestCase
 
   test "order should be most recent first" do
     assert_equal castles(:most_recent), Castle.first
+  end
+
+  test "associated posts should be destroyed" do
+    @castle.save
+    picture = Rack::Test::UploadedFile.new(Rails.root.join('test', 'fixtures',
+                                                    'test.jpg'), 'img/jpg')
+    @castle.posts.create!(picture: picture)
+    assert_difference 'Post.count', -1 do
+      @castle.destroy
+    end
   end
 
 end

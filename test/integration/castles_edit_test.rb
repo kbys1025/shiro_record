@@ -20,7 +20,7 @@ class CastlesEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_castle_path(@castle)
     assert_template 'castles/edit'
-    picture = fixture_file_upload('test/fixtures/IMG_0346.jpg', 'image/jpg')
+    picture = fixture_file_upload('test/fixtures/test.jpg', 'image/jpg')
     name = "○○城"
     location = "△県"
     comment = "○△□"

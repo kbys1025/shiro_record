@@ -17,7 +17,7 @@ class CastlesInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation'
     assert_select 'input[type=file]'
     # 有効な送信
-    picture = fixture_file_upload('test/fixtures/IMG_0346.jpg', 'image/jpg')
+    picture = fixture_file_upload('test/fixtures/test.jpg', 'image/jpg')
     name = "a"
     location = "a"
     comment = "a"

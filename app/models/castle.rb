@@ -1,5 +1,6 @@
 class Castle < ApplicationRecord
   belongs_to :user
+  has_many :posts, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
   validates :picture, presence: true
@@ -9,13 +10,8 @@ class Castle < ApplicationRecord
   validates :comment, presence: true, length: { maximum: 255 }
   validate :picture_size
 
-  private
-
-    # アップされた画像のサイズをバリデーションする
-    def picture_size
-      if picture.size > 5.megabytes
-        errors.add(:picture, "画像サイズが5MBを超えています")
-      end
-    end
+  def post_feed
+    Post.where("castle_id = ?", id)
+  end
 
 end

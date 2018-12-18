@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% file_path = Rails.root.join('test', 'fixtures') %>
+
+a:
+  picture: <%= file_path.join('test.jpg') %>
+  created_at: <%= 10.minutes.ago %>
+  castle: one
+
+b:
+  picture: <%= file_path.join('test.jpg') %>
+  created_at: <%= 50.minutes.ago %>
+  castle: one
+
+c:
+  picture: <%= file_path.join('test.jpg') %>
+  created_at: <%= 35.minutes.ago %>
+  castle: one
+
+d:
+  picture: <%= file_path.join('test.jpg') %>
+  created_at: <%= 5.minutes.ago %>
+  castle: one

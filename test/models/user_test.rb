@@ -73,7 +73,7 @@ class UserTest < ActiveSupport::TestCase
   test "associated castles should be destroyed" do
     @user.save
     picture = Rack::Test::UploadedFile.new(Rails.root.join('test', 'fixtures',
-                                                    'IMG_0346.jpg'), 'img/jpg')
+                                                    'test.jpg'), 'img/jpg')
     @user.castles.create!(picture: picture, name: "大阪城",
                           location: "大阪府大阪市", comment: "大きなお城でした")
     assert_difference 'Castle.count', -1 do

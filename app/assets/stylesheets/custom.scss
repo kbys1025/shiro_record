@@ -256,4 +256,17 @@ span.picture {
 
 .castle-show {
   text-align: center;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.castle-posts {
+  text-align: center;
+  ol {
+    float: left;
+    padding: 5px;
+  }
+}
+
+.post-show {
+  text-align: center;
 }
