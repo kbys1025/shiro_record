@@ -2,14 +2,14 @@ class PictureUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_limit: [400, 400]
+  process resize_to_limit: [500, 400]
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
     storage :fog
   else
     storage :file
-  end 
+  end
 
 
   # Override the directory where uploaded files will be stored.
@@ -19,7 +19,9 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url(*args)
+   def default_url
+     "default.png"
+   end
   #   # For Rails 3.1+ asset pipeline compatibility:
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
@@ -34,9 +36,27 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
+
+   # user用サムネイル1
+   version :thumb_user_1 do
+     process resize_to_fit: [50, 50]
+   end
+
+   # user用サムネイル2
+   version :thumb_user_2 do
+     process resize_to_fit: [100, 100]
+   end
+
+   # castle用サムネイル
+   version :thumb_castle do
+     process resize_to_fit: [150, 100]
+   end
+
+   # post用サムネイル
+   version :tumb_post do
+     process resize_to_fit: [200, 150]
+   end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

@@ -1,10 +1,9 @@
 ja:
   activerecord:
-    models:
-      user:
     attributes:
       user:
         name: 名前
+        image: アイコン
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認用）
@@ -15,3 +14,4 @@ ja:
         comment: コメント
       post:
         picture: 写真
+        comment: コメント

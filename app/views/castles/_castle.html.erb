@@ -1,13 +1,15 @@
 <li id="castle-<%= castle.id %>">
-  <%= link_to  gravatar_for(castle.user, size: 50), castle.user %>
+  <span class="icon">
+    <%= link_to  image_tag(castle.user.image.url(:thumb_user_1)), castle.user %>
+  </span>
   <span class="user"><%= link_to castle.user.name, castle.user %></span>
-  <%= link_to castle do %>
     <span class="content">
-      <%= image_tag castle.picture.url, :size => "120x100" %>
-      <%= castle.name %>
-      （<%= castle.location %>）
+      <%= link_to image_tag(castle.picture.url(:thumb_castle)), castle %>
+      <%= link_to castle do %>
+        <%= castle.name %>
+        （<%= castle.location %>）
+      <% end %>
     </span>
-  <% end %>
   <span class="timestamp">
     <%= time_ago_in_words(castle.created_at) %>前
     <% if current_user?(castle.user) %>

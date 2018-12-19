@@ -9,5 +9,6 @@ class ApplicationRecord < ActiveRecord::Base
         errors.add(:picture, "画像サイズが5MBを超えています")
       end
     end
-    
+
+
 end

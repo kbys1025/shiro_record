@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @castle = @user.castles.build
     @castles = @user.castles.paginate(page: params[:page])
   end
 
@@ -63,7 +64,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
+      params.require(:user).permit(:name, :image, :email, :password,
                                       :password_confirmation)
     end
 

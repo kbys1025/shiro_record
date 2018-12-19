@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
+  mount_uploader :image, PictureUploader
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -18,6 +19,7 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validate :image_size
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)
@@ -69,6 +71,13 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  # アップされた画像のサイズをバリデーションする
+  def image_size
+    if image.size > 5.megabytes
+      errors.add(:image, "画像サイズが5MBを超えています")
+    end
   end
 
 end
