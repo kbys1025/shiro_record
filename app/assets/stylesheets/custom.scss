@@ -58,7 +58,6 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
-  /*color: orange;*/
   color: $gray-light;
 }
 
@@ -68,12 +67,10 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  /*color: $gray-light;*/
 }
 
 h3 {
   color: $gray-light;
-  /*color: orange;*/
   a {
     color: $gray-light;
     &:hover {
@@ -150,7 +147,6 @@ footer {
 
 .jumbotron {
   background-color: #FDF5E6;
-  /*background-color: white;*/
 }
 
 
@@ -351,13 +347,11 @@ input {
         text-decoration: none;
       }
     }
-
     img {
       display: block;
       padding: 5px 0;
     }
   }
-
   .timestamp {
     color: $gray-light;
     display: block;
