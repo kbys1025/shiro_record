@@ -42,7 +42,7 @@ class CastleTest < ActiveSupport::TestCase
   end
 
   test "order should be most recent first" do
-    assert_equal castles(:most_recent), Castle.first
+    assert_equal castles(:four), Castle.first
   end
 
   test "associated posts should be destroyed" do

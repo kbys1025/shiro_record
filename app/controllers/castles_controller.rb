@@ -5,6 +5,7 @@ class CastlesController < ApplicationController
   def show
     @castle = Castle.find(params[:id])
     @post = @castle.posts.build
+    @user = @castle.user
   end
 
   def create
@@ -20,13 +21,15 @@ class CastlesController < ApplicationController
 
   def edit
     @castle = Castle.find(params[:id])
+    @user = @castle.user
   end
 
   def update
     @castle = Castle.find(params[:id])
+    @user = @castle.user
     if @castle.update_attributes(castle_params)
       flash[:success] = "変更を保存しました"
-      redirect_to @castle
+      redirect_to user_castle_path(@user, @castle)
     else
       render 'edit'
     end

@@ -9,27 +9,29 @@ class CastlesEditTest < ActionDispatch::IntegrationTest
 
   test "unsuccessful edit" do
     log_in_as(@user)
-    get edit_castle_path(@castle)
+    get edit_user_castle_path(@user, @castle)
     assert_template 'castles/edit'
-    patch castle_path(@castle), params: { castle: { name: "", location: "",
-                                                    comment: "" } }
+    patch user_castle_path(@user, @castle), params: { castle: { name: "",
+                                                            location: "",
+                                                             comment: "" } }
     assert_template 'castles/edit'
   end
 
   test "successful edit" do
     log_in_as(@user)
-    get edit_castle_path(@castle)
+    get edit_user_castle_path(@user, @castle)
     assert_template 'castles/edit'
     picture = fixture_file_upload('test/fixtures/test.jpg', 'image/jpg')
     name = "○○城"
     location = "△県"
     comment = "○△□"
-    patch castle_path(@castle), params: { castle: { picture: picture,
+    patch user_castle_path(@user, @castle),
+                                params: { castle: { picture: picture,
                                                       name: name,
                                                     location: location,
                                                     comment: comment } }
     assert_not flash.empty?
-    assert_redirected_to @castle
+    assert_redirected_to user_castle_path(@user, @castle)
     @castle.reload
     assert assigns(:castle).picture?
     assert_equal name, @castle.name

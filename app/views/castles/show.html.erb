@@ -16,7 +16,7 @@
       <h3>
         <%= @castle.name %>（<%= @castle.location %>）
         <% if current_user.id == @castle.user_id %>
-          <%= link_to "編集", edit_castle_path(@castle) %>
+          <%= link_to "編集", edit_user_castle_path(@user, @castle) %>
         <% end %>
       </h3>
       <span class="img">

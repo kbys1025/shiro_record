@@ -11,8 +11,8 @@
       <h3>
         <%= @castle.name %>（<%= @castle.location %>）
         <% if current_user.id == @castle.user_id %>
-          <%= link_to "編集", edit_castle_post_path(@castle, @post) %>
-          | <%= link_to "削除", castle_post_path(@castle, @post), method: :delete,
+          <%= link_to "編集", edit_user_castle_post_path(@user, @castle, @post) %>
+          | <%= link_to "削除", user_castle_post_path(@user, @castle, @post), method: :delete,
                           data: { confirm: "本当に？" } %>
         <% end %>
       </h3>

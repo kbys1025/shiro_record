@@ -26,7 +26,7 @@ tree:
   created_at: <%= 2.hours.ago %>
   user: test1
 
-most_recent:
+four:
   picture: <%= file_path.join('test.jpg') %>
   name: "備中松山城"
   location: "岡山県高梁市"
@@ -44,7 +44,7 @@ castle_<%= n %>:
   user: test1
 <% end %>
 
-four:
+five:
   picture: <%= file_path.join('test.jpg') %>
   name: "a"
   location: "a"
@@ -52,7 +52,7 @@ four:
   created_at: <%= 2.years.ago %>
   user: test2
 
-five:
+six:
   picture: <%= file_path.join('test.jpg') %>
   name: "a"
   location: "a"
@@ -60,7 +60,7 @@ five:
   created_at: <%= 3.days.ago %>
   user: test2
 
-six:
+seven:
   picture: <%= file_path.join('test.jpg') %>
   name: "a"
   location: "a"
@@ -68,7 +68,7 @@ six:
   created_at: <%= 10.minutes.ago %>
   user: test3
 
-seven:
+eight:
   picture: <%= file_path.join('test.jpg') %>
   name: "a"
   location: "a"

@@ -18,4 +18,9 @@ class PostTest < ActiveSupport::TestCase
     assert_not @post.valid?
   end
 
+  test "comment should be at most 50 characters" do
+    @post.comment = "a" * 51
+    assert_not @post.valid?
+  end
+
 end

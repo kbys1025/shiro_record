@@ -1,24 +1,19 @@
-# README
+# 城レコ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+城レコはポートフォリオとして作られたサンプルアプリケーションです。
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 実装機能
+* ユーザー登録機能
+* ユーザー編集機能
+* ユーザー一覧表示機能
+* ユーザーフォロー機能
+* ログイン/ログアウト機能
+* 管理ユーザー機能
+* コンテンツ投稿機能
+* コンテンツ一覧表示機能
+* コンテンツ詳細表示機能
+* コンテンツ編集/削除機能
+* 画像アップロード機能
+* ページネーション機能
+* 単体テスト機能(minitest)
+* 統合テスト機能(minitest)

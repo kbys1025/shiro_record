@@ -1,5 +1,5 @@
 <% @castle.post_feed.each do |post| %>
-  <%= link_to castle_post_path(post.castle, post) do %>
+  <%= link_to user_castle_post_path(post.castle.user, post.castle, post) do %>
     <ol class="posts">
       <%= image_tag post.picture.url(:tumb_post) %>
     </ol>

@@ -4,8 +4,8 @@
   </span>
   <span class="user"><%= link_to castle.user.name, castle.user %></span>
     <span class="content">
-      <%= link_to image_tag(castle.picture.url(:thumb_castle)), castle %>
-      <%= link_to castle do %>
+      <%= link_to image_tag(castle.picture.url(:thumb_castle)), user_castle_path(castle.user, castle) %>
+      <%= link_to user_castle_path(castle.user, castle) do %>
         <%= castle.name %>
         （<%= castle.location %>）
       <% end %>
@@ -13,7 +13,7 @@
   <span class="timestamp">
     <%= time_ago_in_words(castle.created_at) %>前
     <% if current_user?(castle.user) %>
-      <%= link_to "削除", castle, method: :delete,
+      <%= link_to "削除", user_castle_path(castle.user, castle), method: :delete,
                           data: { confirm: "本当に？" } %>
     <% end %>
   </span>

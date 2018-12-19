@@ -12,7 +12,8 @@ class CastlesInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'div.pagination'
     # 無効な送信
     assert_no_difference 'Castle.count' do
-      post castles_path, params: { castle: { name: "" } }
+      post user_castles_path user_id: @user.id,
+                                    params: { castle: { name: "" } }
     end
     assert_select 'div#error_explanation'
     assert_select 'input[type=file]'
@@ -22,10 +23,11 @@ class CastlesInterfaceTest < ActionDispatch::IntegrationTest
     location = "a"
     comment = "a"
     assert_difference 'Castle.count', 1 do
-      post castles_path, params: { castle: { picture: picture,
-                                              name: name,
-                                              location: location,
-                                              comment: comment } }
+      post user_castles_path(@user, @user.castles.build),
+                                        params: { castle: { picture: picture,
+                                                               name: name,
+                                                           location: location,
+                                                            comment: comment } }
     end
     assert assigns(:castle).picture?
     follow_redirect!
@@ -35,7 +37,7 @@ class CastlesInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'a', text: '削除'
     first_castle = @user.castles.paginate(page: 1).first
     assert_difference 'Castle.count', -1 do
-      delete castle_path(first_castle)
+      delete user_castle_path(@user, first_castle)
     end
     # 違うユーザーのプロフィールにアクセス（削除リンクがないことを確認）
     get user_path(users(:test2))
