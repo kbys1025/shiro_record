@@ -19,7 +19,7 @@
 * 言語：Ruby, HTML, CSS, JavaScript
 * フレームワーク：Ruby on Rails, Bootstrap
 * ライブラリ：jQuery
-* RDB：PostgreSQL
+* データベース：PostgreSQL
 * バージョン管理：Git
 * ソースコード管理：GitHub
 * サーバー環境：Heroku
