@@ -1,3 +1,8 @@
-<%= link_to image_tag(current_user.image.url(:thumb_user_1)),current_user %>
-<h1><%= link_to current_user.name, current_user %></h1>
-<span>投稿数：<%= current_user.castles.count %></span>
+<% if logged_in? %>
+  <%= link_to image_tag(current_user.image.url(:thumb_user_1)),current_user %>
+  <h1><%= link_to current_user.name, current_user %></h1>
+  <span>投稿数：<%= current_user.castles.count %></span>
+<% else %>
+  <%= link_to image_tag(@user.image.url(:thumb_user_1)),@user %>
+  <h1><%= link_to @user.name, @user %></h1>
+<% end %>

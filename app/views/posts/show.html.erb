@@ -10,10 +10,12 @@
     <div class="post-show">
       <h3>
         <%= @castle.name %>（<%= @castle.location %>）
-        <% if current_user.id == @castle.user_id %>
-          <%= link_to "編集", edit_user_castle_post_path(@user, @castle, @post) %>
-          | <%= link_to "削除", user_castle_post_path(@user, @castle, @post), method: :delete,
-                          data: { confirm: "本当に？" } %>
+        <% if logged_in? %>
+          <% if current_user.id == @castle.user_id %>
+            <%= link_to "編集", edit_user_castle_post_path(@user, @castle, @post) %>
+            | <%= link_to "削除", user_castle_post_path(@user, @castle, @post), method: :delete,
+                            data: { confirm: "本当に？" } %>
+          <% end %>
         <% end %>
       </h3>
       <span class="img">

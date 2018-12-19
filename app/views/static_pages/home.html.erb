@@ -22,6 +22,10 @@
     <h1>城レコへようこそ</h1>
     <h2>訪れたお城を記録しましょう！</h2>
     <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
+    <h5>
+      サンプルユーザーでログインし、お試し利用することができます→
+      <%= link_to "試してみる", login_path %>
+    </h5>
     <div class="home-images">
       <%= image_tag("home1.JPG", :size => "320x250") %>
       <%= image_tag("home2.JPG", :size => "320x250") %>

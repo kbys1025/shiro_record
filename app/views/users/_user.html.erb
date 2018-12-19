@@ -1,8 +1,10 @@
 <li>
   <%= link_to image_tag(user.image.url(:thumb_user_1)), user  %>
   <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-   | <%= link_to "delete", user, method: :delete,
-                                data: { confirm: "本当に？"} %>
+  <% if logged_in? %>
+    <% if current_user.admin? && !current_user?(user) %>
+     | <%= link_to "削除", user, method: :delete,
+                                  data: { confirm: "本当に？"} %>
+    <% end %>
   <% end %>
 </li>

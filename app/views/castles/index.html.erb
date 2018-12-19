@@ -1,0 +1,10 @@
+<% provide(:title, 'お城一覧') %>
+<h1>お城一覧</h1>
+
+<%= will_paginate %>
+
+<ul class="castles">
+    <%= render @castles %>
+</ul>
+
+<%= will_paginate %>

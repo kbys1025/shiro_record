@@ -5,18 +5,22 @@
     <section class="user_info">
       <%= render 'shared/user_info' %>
     </section>
-    <% if current_user.id == @castle.user_id %>
-      <section>
-        <%= render 'shared/post_form' %>
-      </section>
+    <% if logged_in? %>
+      <% if current_user.id == @castle.user_id %>
+        <section>
+          <%= render 'shared/post_form' %>
+        </section>
+      <% end %>
     <% end %>
   </aside>
   <div class="col-md-9">
     <div class="castle-show">
       <h3>
         <%= @castle.name %>（<%= @castle.location %>）
-        <% if current_user.id == @castle.user_id %>
-          <%= link_to "編集", edit_user_castle_path(@user, @castle) %>
+        <% if logged_in? %>
+          <% if current_user.id == @castle.user_id %>
+            <%= link_to "編集", edit_user_castle_path(@user, @castle) %>
+          <% end %>
         <% end %>
       </h3>
       <span class="img">
