@@ -3,12 +3,22 @@ class PictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   process resize_to_limit: [500, 400]
+  process :strip
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
     storage :fog
   else
     storage :file
+  end
+
+  # exif情報を削除して画像をアップロードできるようにする
+  def strip
+    manipulate! do |img|
+      img.strip
+      img = yield(img) if block_given?
+      img
+    end
   end
 
 
